@@ -1,4 +1,4 @@
-import { createContext, useContext, useState } from 'react';
+import { createContext, useState } from 'react';
 import type INote from '../types/note';
 import type { INoteContext, INoteContextProps } from '../types/note';
 
