@@ -1,15 +1,17 @@
 export default interface INote {
-  id: number;
+  id?: number;
   text: string;
-  createdAt: string;
+  createdAt?: string;
+  updatedAt?: string;
 }
 
 export interface INoteContextProps {
   children: React.ReactNode;
+  notes: INote[];
 }
 
 export interface INoteContext {
-  notes: INote[];
+  initialNotes: INote[];
+  handleSetInitialNotes: (notes: INote[]) => void;
   addNote: (note: INote) => void;
-  deleteNote: (note: INote) => void;
 }

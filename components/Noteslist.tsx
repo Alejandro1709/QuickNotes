@@ -8,9 +8,9 @@ interface INotesListProps {
 export default function NotesList({ notes }: INotesListProps) {
   return (
     <ul className='flex flex-col gap-6' role='list'>
-      {notes.map((note) => (
-        <Note key={note.id} note={note} />
-      ))}
+      {notes && notes.length > 0
+        ? notes.map((note) => <Note key={note.id} note={note} />)
+        : null}
     </ul>
   );
 }

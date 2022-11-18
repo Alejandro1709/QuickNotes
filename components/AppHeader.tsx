@@ -5,21 +5,32 @@ import type INote from '../types/note';
 export default function AppHeader() {
   const inputRef = useRef<HTMLInputElement>(null);
 
-  const { notes, addNote } = useNotes();
+  const { initialNotes, addNote } = useNotes();
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    console.log(initialNotes);
 
     const newNote: INote = {
-      id: notes.length + 1,
       text: inputRef.current?.value || '',
-      createdAt: new Date().toLocaleString(),
     };
 
-    addNote(newNote);
+    try {
+      fetch('/api/notes', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(newNote),
+      }).then(() => {
+        addNote(newNote);
 
-    if (inputRef.current) {
-      inputRef.current.value = '';
+        if (inputRef.current) {
+          inputRef.current.value = '';
+        }
+      });
+    } catch (error) {
+      console.log(error);
     }
   };
 
