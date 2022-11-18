@@ -1,5 +1,5 @@
-import type INote from '../types/note';
 import Note from './Note';
+import type INote from '../types/note';
 
 interface INotesListProps {
   notes: INote[];

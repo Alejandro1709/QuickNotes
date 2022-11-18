@@ -1,5 +1,4 @@
 import type INote from '../types/note';
-
 interface INoteProps {
   note: INote;
 }

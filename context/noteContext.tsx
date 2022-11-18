@@ -4,7 +4,7 @@ import type { INoteContext, INoteContextProps } from '../types/note';
 
 export const NoteContext = createContext<INoteContext>({
   notes: [],
-  addNote: (note: INote) => {},
+  addNote: (_note: INote) => {},
 });
 
 function NoteProvider({ children }: INoteContextProps) {
