@@ -3,7 +3,7 @@ import PageLayout from '../components/PageLayout';
 export default function Home() {
   return (
     <PageLayout metaTitle='QuickNotes | Home'>
-      <h1>Hello</h1>
+      <section className='mx-6 pt-6 md:mx-0'>Hola</section>
     </PageLayout>
   );
 }

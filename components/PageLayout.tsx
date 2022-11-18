@@ -1,4 +1,5 @@
 import Head from 'next/head';
+import AppHeader from './AppHeader';
 import AppWrapper from './AppWrapper';
 
 interface IPageLayoutProps {
@@ -19,6 +20,8 @@ export default function PageLayout({
         <meta name='description' content={metaDesc} />
         <link rel='icon' href='/favicon.ico' />
       </Head>
+
+      <AppHeader />
 
       <main>{children}</main>
     </AppWrapper>
