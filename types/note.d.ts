@@ -2,6 +2,7 @@ export default interface INote {
   id: number;
   text: string;
   createdAt: string;
+  updatedAt: string;
 }
 
 export interface INoteContextProps {
