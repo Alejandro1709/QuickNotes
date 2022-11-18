@@ -10,7 +10,7 @@ export default function Note({ note }: INoteProps) {
 
   const inputRef = useRef<HTMLInputElement>(null);
 
-  const { notes } = useNotes();
+  const { notes, deleteNote } = useNotes();
 
   const handleEditClick = () => {
     setIsEditing(!isEditing);
@@ -36,6 +36,14 @@ export default function Note({ note }: INoteProps) {
     setIsEditing(false);
   };
 
+  const handleDeleteClick = () => {
+    const noteToDelete = notes.find((n) => n.id === note.id);
+
+    if (!noteToDelete) return;
+
+    deleteNote(noteToDelete);
+  };
+
   return (
     <li>
       <h2 className='text-2xl font-bold'>{note.createdAt}</h2>
@@ -59,7 +67,7 @@ export default function Note({ note }: INoteProps) {
         ) : (
           <div className='flex flex-row space-x-4'>
             <button onClick={handleEditClick}>Edit</button>
-            <button>Delete</button>
+            <button onClick={handleDeleteClick}>Delete</button>
           </div>
         )}
       </div>

@@ -5,6 +5,7 @@ import type { INoteContext, INoteContextProps } from '../types/note';
 export const NoteContext = createContext<INoteContext>({
   notes: [],
   addNote: (_note: INote) => {},
+  deleteNote: (_note: INote) => {},
 });
 
 function NoteProvider({ children }: INoteContextProps) {
@@ -14,8 +15,13 @@ function NoteProvider({ children }: INoteContextProps) {
     setNotes((prevNotes) => [...prevNotes, note]);
   };
 
+  const deleteNote = (note: INote) => {
+    const filteredNotes = notes.filter((n) => n.id !== note.id);
+    setNotes(filteredNotes);
+  };
+
   return (
-    <NoteContext.Provider value={{ notes, addNote }}>
+    <NoteContext.Provider value={{ notes, addNote, deleteNote }}>
       {children}
     </NoteContext.Provider>
   );
