@@ -3,25 +3,25 @@ import type INote from '../types/note';
 import type { INoteContext, INoteContextProps } from '../types/note';
 
 export const NoteContext = createContext<INoteContext>({
-  notes: [],
+  initialNotes: [],
   addNote: (_note: INote) => {},
   deleteNote: (_note: INote) => {},
 });
 
-function NoteProvider({ children }: INoteContextProps) {
-  const [notes, setNotes] = useState<INote[]>([]);
+function NoteProvider({ children, notes }: INoteContextProps) {
+  const [initialNotes, setInitialNotes] = useState<INote[]>(notes);
 
   const addNote = (note: INote) => {
-    setNotes((prevNotes) => [...prevNotes, note]);
+    setInitialNotes((prevNotes) => [...prevNotes, note]);
   };
 
   const deleteNote = (note: INote) => {
     const filteredNotes = notes.filter((n) => n.id !== note.id);
-    setNotes(filteredNotes);
+    setInitialNotes(filteredNotes);
   };
 
   return (
-    <NoteContext.Provider value={{ notes, addNote, deleteNote }}>
+    <NoteContext.Provider value={{ initialNotes, addNote, deleteNote }}>
       {children}
     </NoteContext.Provider>
   );

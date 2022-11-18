@@ -10,7 +10,7 @@ export default function Note({ note }: INoteProps) {
 
   const inputRef = useRef<HTMLInputElement>(null);
 
-  const { notes, deleteNote } = useNotes();
+  const { initialNotes, deleteNote } = useNotes();
 
   const handleEditClick = () => {
     setIsEditing(!isEditing);
@@ -23,7 +23,7 @@ export default function Note({ note }: INoteProps) {
   };
 
   const handleConfirmUpdate = () => {
-    const noteToUpdate = notes.find((n) => n.id === note.id);
+    const noteToUpdate = initialNotes.find((n) => n.id === note.id);
 
     if (!noteToUpdate) return;
 
@@ -37,7 +37,7 @@ export default function Note({ note }: INoteProps) {
   };
 
   const handleDeleteClick = () => {
-    const noteToDelete = notes.find((n) => n.id === note.id);
+    const noteToDelete = initialNotes.find((n) => n.id === note.id);
 
     if (!noteToDelete) return;
 
