@@ -1,4 +1,5 @@
 import Head from 'next/head';
+import AppWrapper from './AppWrapper';
 
 interface IPageLayoutProps {
   metaTitle: string;
@@ -12,7 +13,7 @@ export default function PageLayout({
   metaDesc = 'QuickNotes is a simple note-taking app.',
 }: IPageLayoutProps) {
   return (
-    <div className=''>
+    <AppWrapper>
       <Head>
         <title>{metaTitle}</title>
         <meta name='description' content={metaDesc} />
@@ -20,6 +21,6 @@ export default function PageLayout({
       </Head>
 
       <main>{children}</main>
-    </div>
+    </AppWrapper>
   );
 }
