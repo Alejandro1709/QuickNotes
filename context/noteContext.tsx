@@ -4,16 +4,20 @@ import type { INoteContext, INoteContextProps } from '../types/note';
 
 export const NoteContext = createContext<INoteContext>({
   notes: [],
+  addNote: (note: INote) => {},
 });
 
 function NoteProvider({ children }: INoteContextProps) {
-  const [notes, setNotes] = useState<INote[]>([
-    { id: 1, text: 'This is my first note', createdAt: '2022-11-18 10:23 AM' },
-    { id: 2, text: 'This is my second note', createdAt: '2022-11-18 10:34 AM' },
-  ]);
+  const [notes, setNotes] = useState<INote[]>([]);
+
+  const addNote = (note: INote) => {
+    setNotes((prevNotes) => [...prevNotes, note]);
+  };
 
   return (
-    <NoteContext.Provider value={{ notes }}>{children}</NoteContext.Provider>
+    <NoteContext.Provider value={{ notes, addNote }}>
+      {children}
+    </NoteContext.Provider>
   );
 }
 
