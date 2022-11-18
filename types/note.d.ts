@@ -1,8 +1,8 @@
 export default interface INote {
-  id: number;
+  id?: number;
   text: string;
-  createdAt: string;
-  updatedAt: string;
+  createdAt?: string;
+  updatedAt?: string;
 }
 
 export interface INoteContextProps {
@@ -12,6 +12,6 @@ export interface INoteContextProps {
 
 export interface INoteContext {
   initialNotes: INote[];
+  handleSetInitialNotes: (notes: INote[]) => void;
   addNote: (note: INote) => void;
-  deleteNote: (note: INote) => void;
 }
