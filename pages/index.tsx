@@ -1,12 +1,8 @@
-import { useState } from 'react';
 import PageLayout from '../components/PageLayout';
+import useNotes from '../hooks/useNotes';
 
 export default function Home() {
-  const [notes, setNotes] = useState([
-    { id: 1, text: 'This is my first note', createdAt: '2022-11-18 10:23 AM' },
-    { id: 2, text: 'This is my second note', createdAt: '2022-11-18 10:34 AM' },
-  ]);
-
+  const { notes } = useNotes();
   return (
     <PageLayout metaTitle='QuickNotes | Home'>
       <section className='mx-6 pt-6 md:mx-0'>
